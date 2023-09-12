@@ -121,6 +121,7 @@ export function useCustomForm(): CustomForm {
     if (!hasErrors) {
       // Submit the form
       // You can add your submission logic here
+      console.log(formData);
     }
   };
 

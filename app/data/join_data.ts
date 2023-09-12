@@ -50,7 +50,7 @@ export const join_forms: ValidateForm = {
       name: "username",
       description: "Please enter username",
       placeholder: "Please enter username",
-      label: "First Name",
+      label: "Username",
       suffix: "",
       prefix: "",
       style: {
@@ -283,6 +283,8 @@ export const join_forms: ValidateForm = {
       prefix: "",
       style: {
         width: 100,
+        display: "flex",
+        flexDirection: "column",
         input_view: "vertical",
         options: "horizontal",
       },
@@ -508,6 +510,8 @@ export const join_forms: ValidateForm = {
       label: "Checkbox Fields",
       style: {
         width: 100,
+        display: "flex",
+        flexDirection: "column",
         input_view: "vertical",
         options: "horizontal",
       },

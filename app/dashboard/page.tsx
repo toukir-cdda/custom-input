@@ -1,8 +1,7 @@
 import {
   AiOutlineArrowDown,
   AiOutlineEye,
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
+  AiOutlineClockCircle,
 } from "react-icons/ai";
 
 export default function Dashboard() {
@@ -25,7 +24,7 @@ export default function Dashboard() {
           <hr />
           {/* transaction table  */}
 
-          <div className="relative overflow-hidden rounded-md border-gray-100 border-[1px] ">
+          <div className="relative overflow-x-scroll rounded-md border-gray-100 border-[1px] ">
             <table className="w-full text-left text-gray-500 ">
               {/* table header  */}
               <thead className=" text-[12px] text-gray-700 capitalize bg-gray-100  ">
@@ -78,7 +77,7 @@ export default function Dashboard() {
                       <td
                         key={index}
                         scope="row"
-                        className="px-4 py-3 font-medium wrap "
+                        className="px-4 py-3 font-medium whitespace-nowrap "
                       >
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold">
@@ -90,19 +89,29 @@ export default function Dashboard() {
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="rounded-xl text-sm font-normal bg-orange-200 px-2 py-0.5 text-orange-500">
+                        {/* <span className="rounded-xl text-xs bg-orange-200 px-2 py-0.5 text-orange-500">
                           Pending
-                        </span>
+                        </span> */}
+                        {/* <span className="rounded-xl text-xs bg-red-100 px-2 py-0.5 text-red-500">
+                          Rejected
+                        </span> */}
+                        {/* <span className="rounded-xl text-xs bg-green-100 px-2 py-0.5 text-green-600">
+                          Accepted
+                        </span> */}
+                        <div className="flex items-center gap-1 rounded-xl text-xs bg-gray-100 px-2 py-0.5 text-gray-700">
+                          <AiOutlineClockCircle />
+                          <span>48hr hold</span>
+                        </div>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 whitespace-nowrap">
                         <span className="text-sm font-medium">
                           1901 Thornridge Cir. Shiloh, Hawaii 81063
                         </span>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 whitespace-nowrap">
                         <span className="text-sm font-medium">$900.00</span>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex flex-col">
                           <span className="text-sm font-medium">
                             Wade Warren
@@ -115,7 +124,7 @@ export default function Dashboard() {
                           </span>
                         </div>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex flex-col">
                           <span className="text-sm font-medium">
                             Wade Warren
@@ -128,7 +137,7 @@ export default function Dashboard() {
                           </span>
                         </div>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex flex-col">
                           <span className="text-[10px] font-normal text-gray-500">
                             Lest View Date 09-11-23
@@ -147,79 +156,6 @@ export default function Dashboard() {
             </table>
           </div>
         </div>
-
-        {/* new table  */}
-
-        <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-          <thead className="text-white">
-            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Actions</th>
-            </tr>
-            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Actions</th>
-            </tr>
-            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Actions</th>
-            </tr>
-            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="flex-1 sm:flex-none">
-            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td className="border-grey-light border hover:bg-gray-100 p-3">
-                John Covv
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
-                contato@johncovv.com
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                Delete
-              </td>
-            </tr>
-            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td className="border-grey-light border hover:bg-gray-100 p-3">
-                Michael Jackson
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
-                m_jackson@mail.com
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                Delete
-              </td>
-            </tr>
-            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td className="border-grey-light border hover:bg-gray-100 p-3">
-                Julia
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
-                julia@mail.com
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                Delete
-              </td>
-            </tr>
-            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td className="border-grey-light border hover:bg-gray-100 p-3">
-                Martin Madrazo
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
-                martin.madrazo@mail.com
-              </td>
-              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                Delete
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   );

@@ -1,10 +1,21 @@
 "use client";
-import { useCustomForm } from "@/hooks/useCustomForm";
-import TextField from "./components/TextField";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import CustomInput from "./components/CustomInput";
+import { join_forms } from "./data/join_data";
 
-export default function Home() {
-  const { formErrors, handleSubmit, register } = useCustomForm();
-  console.log(formErrors);
+interface CustomInputProps {
+  item: any;
+}
+
+const SignupSchema = Yup.object().shape({
+  firstname: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+});
+
+const Home: React.FC<CustomInputProps> = () => {
   return (
     <div
       style={{
@@ -12,39 +23,46 @@ export default function Home() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        background: "gray",
       }}
     >
-      <form onSubmit={handleSubmit}>
-        <TextField
-          id="firstname"
-          style={{
-            borderBottom: "1px solid gray",
-            color: "gray",
-            outline: "none",
-          }}
-          label="First name"
-          // name="firstName"
-          placeholder="enter your name"
-          {...register("firstName", { required: true })}
-        />
-        <TextField
-          id="lastname"
-          style={{
-            borderBottom: "1px solid gray",
-            color: "gray",
-            outline: "none",
-          }}
-          label="Last name"
-          // name="firstName"
-          placeholder="enter your last name"
-          {...register("lastName", { required: true })}
-        />
-        {formErrors && formErrors.lastName && (
-          <span>{formErrors.lastName}</span>
+      <Formik
+        initialValues={{
+          firstname: "",
+          role: "",
+          multiselect: "",
+          gender: "",
+        }}
+        validationSchema={SignupSchema}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        {/* { errors, touched } */}
+        {(formikData) => (
+          <Form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              {join_forms?.join?.map((item, index) => (
+                <CustomInput key={index} {...item} />
+              ))}
+            </div>
+            <button type="submit">Submit</button>
+          </Form>
         )}
-
-        <button className="bg-gray-500 tai">Submit</button>
-      </form>
+      </Formik>
     </div>
   );
-}
+};
+
+export default Home;
