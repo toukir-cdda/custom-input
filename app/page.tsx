@@ -3,10 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import CustomInput from "./components/CustomInput";
 import { join_forms } from "./data/join_data";
-
-interface CustomInputProps {
-  item: any;
-}
+import setFormikPropsValue from "../utils/setFormikPropsValue";
 
 const SignupSchema = Yup.object().shape({
   firstname: Yup.string()
@@ -15,7 +12,12 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const Home: React.FC<CustomInputProps> = () => {
+const Home = () => {
+  // console.log(setFormikPropsValue(join_forms?.join));
+  const { initialValues, validationSchema } = setFormikPropsValue(
+    join_forms?.join
+  );
+  console.log(validationSchema);
   return (
     <div
       style={{
@@ -23,28 +25,28 @@ const Home: React.FC<CustomInputProps> = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "gray",
+        background: "black",
+        opacity: "0.8",
       }}
     >
       <Formik
-        initialValues={{
-          firstname: "",
-          role: "",
-          multiselect: "",
-          gender: "",
-        }}
-        validationSchema={SignupSchema}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           console.log(values);
         }}
       >
         {/* { errors, touched } */}
-        {(formikData) => (
+        {({ errors, touched }) => (
           <Form
             style={{
               display: "flex",
               flexDirection: "column",
               gap: "10px",
+              width: "30%",
+              padding: "10px",
+              border: "1px solid white",
+              borderRadius: "10px",
             }}
           >
             <div
@@ -57,7 +59,18 @@ const Home: React.FC<CustomInputProps> = () => {
                 <CustomInput key={index} {...item} />
               ))}
             </div>
-            <button type="submit">Submit</button>
+            <button
+              style={{
+                backgroundColor: "skyblue",
+                color: "white",
+                fontWeight: "bolder",
+                textShadow: "2px 2px #ff0000",
+                borderRadius: "7px",
+              }}
+              type="submit"
+            >
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

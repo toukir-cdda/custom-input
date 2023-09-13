@@ -23,10 +23,28 @@ const CustomSelect: React.FC<CustomInputProps> = ({
   const { handleChange } = useFormikContext();
 
   return (
-    <div style={item.style}>
-      <label>{item.label}</label>
+    <div
+      // style={item.style}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "4px",
+      }}
+    >
+      <label style={{ color: "lightgray" }}>{item.label}</label>
       {item.type === "select" && (
-        <select name={item.name} onChange={handleChange} multiple={item.array}>
+        <select
+          style={{
+            background: "transparent",
+            border: "none",
+            borderBottom: "1px dotted black",
+            padding: "0 5px",
+            color: "darkgray",
+          }}
+          name={item.name}
+          onChange={handleChange}
+          multiple={item.array}
+        >
           {item.options?.map((option, index) => (
             <option value={option.value} key={index}>
               {option.desc}

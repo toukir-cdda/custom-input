@@ -1,5 +1,4 @@
 import { useFormikContext, ErrorMessage } from "formik";
-import { useEffect } from "react";
 
 interface CustomInputProps {
   label: string;
@@ -9,12 +8,11 @@ interface CustomInputProps {
   style?: any;
   placeholder?: string;
   item: any;
-  default?: string;
 }
 
-const CustomTextBox: React.FC<CustomInputProps> = ({ ...item }) => {
-  const { values, handleChange, setFieldValue } = useFormikContext();
-
+const CustomDate: React.FC<CustomInputProps> = ({ ...item }) => {
+  const { handleChange } = useFormikContext();
+  // console.log(item);
   return (
     <div
       // style={item.style}
@@ -26,23 +24,23 @@ const CustomTextBox: React.FC<CustomInputProps> = ({ ...item }) => {
     >
       <label style={{ color: "lightgray" }}>{item.label}</label>
       <input
-        // style={{
-        //   background: "transparent",
-        //   border: "none",
-        //   borderBottom: "1px dotted white",
-        //   padding: "0 5px",
-        //   color: "darkgray",
-        // }}
-        // type={item.type}
-        // name={item.name}
-        value={values[item.name]}
-        {...item}
+        style={{
+          background: "transparent",
+          border: "none",
+          borderBottom: "1px dotted white",
+          padding: "0 5px",
+          color: "lightgray",
+        }}
+        type={item.type}
+        name={item.name}
+        // value={values[name]}
+        // {...item}
         onChange={handleChange}
-        // placeholder={item.placeholder}
+        placeholder={item.placeholder}
       />
       <ErrorMessage name={item.name} />
     </div>
   );
 };
 
-export default CustomTextBox;
+export default CustomDate;

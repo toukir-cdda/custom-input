@@ -113,8 +113,23 @@ export const join_forms: ValidateForm = {
       suffix: "",
       prefix: "",
       style: {
-        width: 100,
+        width: "100%",
         input_view: "vertical",
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          padding: "4px",
+        },
+        label: {
+          color: "lightgray",
+        },
+        input: {
+          background: "transparent",
+          border: "none",
+          borderBottom: "1px dotted white",
+          padding: "0 5px",
+          color: "lightgray",
+        },
       },
       default: "",
       validations: [
@@ -327,178 +342,178 @@ export const join_forms: ValidateForm = {
         },
       ],
     },
-    {
-      field_step: ["step-3"],
-      type: "fieldArray",
-      name: "owner",
-      owner: [
-        {
-          field_step: ["step-3"],
-          type: "checkbox",
-          array: false,
-          typeValue: "array",
-          name: "multiselect",
-          description: "Checkbox field",
-          placeholder: "",
-          label: "Checkbox Fields",
-          style: {
-            width: 100,
-            input_view: "vertical",
-            options: "horizontal",
-          },
-          default: [],
-          options: [
-            {
-              value: "home",
-              desc: "Home",
-            },
-            {
-              value: "about",
-              desc: "About",
-            },
-            {
-              value: "contact",
-              desc: "Contract",
-            },
-          ],
-          validations: [
-            {
-              type: "isArray",
-              message: "This must not be empty",
-            },
-          ],
-        },
-        {
-          type: "text",
-          name: "firstname",
-          description: "Please enter firstname",
-          placeholder: "Please enter firstname",
-          label: "First Name",
-          suffix: "",
-          prefix: "",
-          style: {
-            width: 100,
-            input_view: "vertical",
-          },
-          default: "Maruf",
-          validations: [
-            {
-              type: "required",
-              value: true,
-              message: "Value is required",
-            },
-            {
-              type: "minLength",
-              value: 3,
-              message: "Value is too short",
-            },
-            {
-              type: "maxLength",
-              value: 12,
-              message: "Value is too long",
-            },
-          ],
-        },
-        {
-          type: "text",
-          name: "middlename",
-          description: "Please enter middlename",
-          placeholder: "Please enter middlename",
-          label: "Middle name",
-          suffix: "",
-          prefix: "",
-          style: {
-            width: 100,
-            input_view: "vertical",
-          },
-          default: "",
-          validations: [],
-        },
-        {
-          type: "text",
-          name: "lastname",
-          description: "Please enter lastname",
-          placeholder: "Please enter lastname",
-          label: "Last Name",
-          suffix: "",
-          prefix: "",
-          style: {
-            width: 100,
-            input_view: "vertical",
-          },
-          default: "Islam",
-          validations: [
-            {
-              type: "required",
-              value: true,
-              message: "Value is required",
-            },
-            {
-              type: "minLength",
-              value: 3,
-              message: "Value is too short",
-            },
-            {
-              type: "maxLength",
-              value: 12,
-              message: "Value is too long",
-            },
-          ],
-        },
-        {
-          type: "text",
-          name: "email",
-          description: "Please enter email",
-          placeholder: "example@gmail.com",
-          label: "Email",
-          suffix: "",
-          prefix: "",
-          style: {
-            width: 100,
-            input_view: "vertical",
-          },
-          default: "",
-          validations: [
-            {
-              type: "required",
-              value: true,
-              message: "Value is required",
-            },
-            {
-              type: "isEmail",
-              value: true,
-              message: "Email no valid",
-            },
-            {
-              type: "pattern",
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Pattern not match",
-            },
-          ],
-        },
-        {
-          type: "text",
-          name: "phone",
-          description: "Please enter phone",
-          placeholder: "(941)3127460",
-          label: "Phone",
-          suffix: "",
-          prefix: "",
-          style: {
-            width: 100,
-            input_view: "vertical",
-          },
-          default: "",
-          validations: [
-            {
-              type: "required",
-              value: true,
-              message: "Value is required",
-            },
-          ],
-        },
-      ],
-    },
+    // {
+    //   field_step: ["step-3"],
+    //   type: "fieldArray",
+    //   name: "owner",
+    //   owner: [
+    //     {
+    //       field_step: ["step-3"],
+    //       type: "checkbox",
+    //       array: false,
+    //       typeValue: "array",
+    //       name: "multiselect",
+    //       description: "Checkbox field",
+    //       placeholder: "",
+    //       label: "Checkbox Fields",
+    //       style: {
+    //         width: 100,
+    //         input_view: "vertical",
+    //         options: "horizontal",
+    //       },
+    //       default: [],
+    //       options: [
+    //         {
+    //           value: "home",
+    //           desc: "Home",
+    //         },
+    //         {
+    //           value: "about",
+    //           desc: "About",
+    //         },
+    //         {
+    //           value: "contact",
+    //           desc: "Contract",
+    //         },
+    //       ],
+    //       validations: [
+    //         {
+    //           type: "isArray",
+    //           message: "This must not be empty",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       type: "text",
+    //       name: "firstname",
+    //       description: "Please enter firstname",
+    //       placeholder: "Please enter firstname",
+    //       label: "First Name",
+    //       suffix: "",
+    //       prefix: "",
+    //       style: {
+    //         width: 100,
+    //         input_view: "vertical",
+    //       },
+    //       default: "Maruf",
+    //       validations: [
+    //         {
+    //           type: "required",
+    //           value: true,
+    //           message: "Value is required",
+    //         },
+    //         {
+    //           type: "minLength",
+    //           value: 3,
+    //           message: "Value is too short",
+    //         },
+    //         {
+    //           type: "maxLength",
+    //           value: 12,
+    //           message: "Value is too long",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       type: "text",
+    //       name: "middlename",
+    //       description: "Please enter middlename",
+    //       placeholder: "Please enter middlename",
+    //       label: "Middle name",
+    //       suffix: "",
+    //       prefix: "",
+    //       style: {
+    //         width: 100,
+    //         input_view: "vertical",
+    //       },
+    //       default: "",
+    //       validations: [],
+    //     },
+    //     {
+    //       type: "text",
+    //       name: "lastname",
+    //       description: "Please enter lastname",
+    //       placeholder: "Please enter lastname",
+    //       label: "Last Name",
+    //       suffix: "",
+    //       prefix: "",
+    //       style: {
+    //         width: 100,
+    //         input_view: "vertical",
+    //       },
+    //       default: "Islam",
+    //       validations: [
+    //         {
+    //           type: "required",
+    //           value: true,
+    //           message: "Value is required",
+    //         },
+    //         {
+    //           type: "minLength",
+    //           value: 3,
+    //           message: "Value is too short",
+    //         },
+    //         {
+    //           type: "maxLength",
+    //           value: 12,
+    //           message: "Value is too long",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       type: "text",
+    //       name: "email",
+    //       description: "Please enter email",
+    //       placeholder: "example@gmail.com",
+    //       label: "Email",
+    //       suffix: "",
+    //       prefix: "",
+    //       style: {
+    //         width: 100,
+    //         input_view: "vertical",
+    //       },
+    //       default: "",
+    //       validations: [
+    //         {
+    //           type: "required",
+    //           value: true,
+    //           message: "Value is required",
+    //         },
+    //         {
+    //           type: "isEmail",
+    //           value: true,
+    //           message: "Email no valid",
+    //         },
+    //         {
+    //           type: "pattern",
+    //           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+    //           message: "Pattern not match",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       type: "text",
+    //       name: "phone",
+    //       description: "Please enter phone",
+    //       placeholder: "(941)3127460",
+    //       label: "Phone",
+    //       suffix: "",
+    //       prefix: "",
+    //       style: {
+    //         width: 100,
+    //         input_view: "vertical",
+    //       },
+    //       default: "",
+    //       validations: [
+    //         {
+    //           type: "required",
+    //           value: true,
+    //           message: "Value is required",
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
     {
       field_step: ["step-3"],
       type: "checkbox",

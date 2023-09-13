@@ -23,12 +23,22 @@ const CustomCheckbox: React.FC<CustomInputProps> = ({
   const { values, handleChange } = useFormikContext();
 
   return (
-    <div style={item.style}>
+    <div
+      // style={item.style}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "4px",
+      }}
+    >
       {item.type === "checkbox" && item.options ? (
         <>
-          <label>{item.label}</label>
+          <label style={{ color: "lightgray" }}>{item.label}</label>
           {item.options?.map((option, index) => (
-            <label key={index}>
+            <label
+              key={index}
+              style={{ display: "flex", gap: "3px", color: "darkgray" }}
+            >
               <input
                 type={item.type}
                 name={item.name}
@@ -41,7 +51,7 @@ const CustomCheckbox: React.FC<CustomInputProps> = ({
         </>
       ) : (
         <>
-          <label>
+          <label style={{ display: "flex", gap: "3px", color: "lightgray" }}>
             <input
               type={item.type}
               name={item.name}

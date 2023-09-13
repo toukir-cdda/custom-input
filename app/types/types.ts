@@ -48,11 +48,14 @@ export type FormField = {
   suffix?: string;
   prefix?: string;
   style?: {
-    width: number;
+    width: number | string;
     display?: string;
     flexDirection?: string;
     input_view: string;
     options?: string;
+    container?: any;
+    label?: any;
+    input?: any;
   };
   default?: any;
   options?: { value: string; desc: string }[];

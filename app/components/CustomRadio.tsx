@@ -23,19 +23,29 @@ const CustomRadio: React.FC<CustomInputProps> = ({
   const { values, handleChange } = useFormikContext();
 
   return (
-    <div style={item.style}>
-      <label>{item.label}</label>
+    <div
+      // style={item.style}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "4px",
+      }}
+    >
+      <label style={{ color: "lightgray" }}>{item.label}</label>
       {item.type === "radio" && (
         <>
           {item.options?.map((option, index) => (
-            <label key={index}>
+            <label
+              key={index}
+              style={{ display: "flex", gap: "3px", color: "darkgray" }}
+            >
               <input
                 type={item.type}
                 name={item.name}
                 value={option.value}
                 onChange={handleChange}
               />
-              {option.desc}
+              <span>{option.desc}</span>
             </label>
           ))}
         </>
