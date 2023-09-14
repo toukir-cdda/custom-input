@@ -1,4 +1,6 @@
+import { selectStyles } from "@/redux/styleSlice";
 import { useFormikContext, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 
 interface CustomInputProps {
   label: string;
@@ -13,6 +15,7 @@ interface CustomInputProps {
 const CustomDate: React.FC<CustomInputProps> = ({ ...item }) => {
   const { handleChange } = useFormikContext();
   // console.log(item);
+  const dispatch = useDispatch();
   return (
     <div
       // style={item.style}
@@ -37,8 +40,13 @@ const CustomDate: React.FC<CustomInputProps> = ({ ...item }) => {
         // {...item}
         onChange={handleChange}
         placeholder={item.placeholder}
+        onFocus={() => dispatch(selectStyles(item.style))}
       />
-      <ErrorMessage name={item.name} />
+      <ErrorMessage
+        name={item.name}
+        component="div"
+        className="text-red-500 text-xs py-1 "
+      />
     </div>
   );
 };

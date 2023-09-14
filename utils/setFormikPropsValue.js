@@ -10,20 +10,20 @@ const setFormikPropsValue = (field) => {
   if (field) {
     for (const arField of field) {
       arrValue[arField.name] = arField.default;
-
+      initialValues[arField.name] = arField.default;
       const schema = generateValidations(arField);
 
       validationArrValue[arField.name] = schema;
     }
   }
 
-  for (const singleField of field) {
-    initialValues[singleField.name] = singleField.default;
+  // for (const singleField of field) {
+  //   initialValues[singleField.name] = singleField.default;
 
-    validationsFields[singleField.name] = Yup.array().of(
-      Yup.object().shape(validationArrValue)
-    );
-  }
+  //   validationsFields[singleField.name] = Yup.array().of(
+  //     Yup.object().shape(validationArrValue)
+  //   );
+  // }
 
   //     initialValues[newName] = [arrValue];
 
@@ -34,7 +34,7 @@ const setFormikPropsValue = (field) => {
   //   );
 
   // }
-
+  // console.log(validationArrValue);
   if (field?.validations) {
     const schema = generateValidations(field);
 
@@ -42,7 +42,7 @@ const setFormikPropsValue = (field) => {
   }
   // console.log(initialValues);
   return {
-    validationSchema: Yup.object({ ...validationsFields }),
+    validationSchema: Yup.object({ ...validationArrValue }),
 
     initialValues,
 

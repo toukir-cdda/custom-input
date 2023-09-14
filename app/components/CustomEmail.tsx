@@ -1,40 +1,23 @@
+import { selectStyles } from "@/redux/styleSlice";
 import { useFormikContext, ErrorMessage } from "formik";
-
+import { useDispatch } from "react-redux";
 const CustomEmail = ({ ...item }) => {
-  const { values, handleChange, setFieldValue } = useFormikContext();
-  // console.log(item.style);
+  const { values, handleChange } = useFormikContext();
+  const dispatch = useDispatch();
   return (
-    <div
-      style={item.style.container}
-      // style={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   padding: "4px",
-      // }}
-    >
-      <label
-        // style={{ color: "lightgray" }}
-        style={item.style.label}
-      >
-        {item.label}
-      </label>
+    <div style={item.style.container}>
+      <label style={item.style.label}>{item.label}</label>
       <input
-        // style={item.style.input}
-        // style={{
-        //   background: "transparent",
-        //   border: "none",
-        //   borderBottom: "1px dotted white",
-        //   padding: "0 5px",
-        //   color: "darkgray",
-        // }}
-        // type={item.type}
-        // name={item.name}
-        // value={item.default}
         {...item}
+        value={values[item.name]}
+        onFocus={() => dispatch(selectStyles(item.style))}
         onChange={handleChange}
-        // placeholder={item.placeholder}
       />
-      <ErrorMessage name={item.name} />
+      <ErrorMessage
+        name={item.name}
+        component="div"
+        className="text-red-500 text-xs py-1 "
+      />
     </div>
   );
 };

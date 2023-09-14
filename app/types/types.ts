@@ -48,10 +48,16 @@ export type FormField = {
   suffix?: string;
   prefix?: string;
   style?: {
-    width: number | string;
+    width?: number | string;
+    backgroundColor?: string;
     display?: string;
     flexDirection?: string;
-    input_view: string;
+    color?: string;
+    fontWeight?: string;
+    textShadow?: string;
+    borderRadius?: string;
+    cursor?: string;
+    input_view?: string;
     options?: string;
     container?: any;
     label?: any;

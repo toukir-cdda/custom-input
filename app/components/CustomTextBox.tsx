@@ -1,46 +1,39 @@
 import { useFormikContext, ErrorMessage } from "formik";
-import { useEffect } from "react";
+import getStyleFromEle from "../../utils/getStyleFromEle";
+import { useDispatch } from "react-redux";
+import { clearStyles, selectStyles } from "@/redux/styleSlice";
 
-interface CustomInputProps {
-  label: string;
-  name: string;
-  type: "text" | "date" | "password" | "select" | "radio" | "checkbox";
-  options?: { label: string; value: string }[];
-  style?: any;
-  placeholder?: string;
-  item: any;
-  default?: string;
-}
+// interface CustomInputProps {
+//   label: string;
+//   name: string;
+//   type: "text" | "date" | "password" | "select" | "radio" | "checkbox";
+//   options?: { label: string; value: string }[];
+//   style?: any;
+//   placeholder?: string;
+//   item: any;
+//   default?: string;
+// }
 
-const CustomTextBox: React.FC<CustomInputProps> = ({ ...item }) => {
+const CustomTextBox = ({ ...item }) => {
+  const dispatch = useDispatch();
   const { values, handleChange, setFieldValue } = useFormikContext();
-
   return (
-    <div
-      // style={item.style}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "4px",
-      }}
-    >
-      <label style={{ color: "lightgray" }}>{item.label}</label>
+    <div style={item.style.container}>
+      <label style={item.style.label}>{item.label}</label>
       <input
-        // style={{
-        //   background: "transparent",
-        //   border: "none",
-        //   borderBottom: "1px dotted white",
-        //   padding: "0 5px",
-        //   color: "darkgray",
-        // }}
-        // type={item.type}
-        // name={item.name}
+        style={item.style.input}
         value={values[item.name]}
         {...item}
         onChange={handleChange}
-        // placeholder={item.placeholder}
+        onFocus={() => dispatch(selectStyles(item.style))}
+        // onFocus={() => eval(`(${item.onfocus})`)}
+        // onBlur={() => dispatch(clearStyles())}
       />
-      <ErrorMessage name={item.name} />
+      <ErrorMessage
+        name={item.name}
+        component="div"
+        className="text-red-500 text-xs py-1 "
+      />
     </div>
   );
 };

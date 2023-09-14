@@ -51,7 +51,11 @@ const CustomRadio: React.FC<CustomInputProps> = ({
         </>
       )}
 
-      <ErrorMessage name={item.name} />
+      <ErrorMessage
+        name={item.name}
+        component="div"
+        className="text-red-500 text-xs py-1 "
+      />
     </div>
   );
 };

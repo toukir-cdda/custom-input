@@ -4,26 +4,23 @@ import * as Yup from "yup";
 import CustomInput from "./components/CustomInput";
 import { join_forms } from "./data/join_data";
 import setFormikPropsValue from "../utils/setFormikPropsValue";
-
-const SignupSchema = Yup.object().shape({
-  firstname: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-});
+import { useSelector, useDispatch } from "react-redux";
+import EditStyle from "./components/EditStyle";
+import { selectStyles } from "@/redux/styleSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { styles } = useSelector((state) => state.inputStyle);
   // console.log(setFormikPropsValue(join_forms?.join));
   const { initialValues, validationSchema } = setFormikPropsValue(
     join_forms?.join
   );
-  console.log(validationSchema);
   return (
     <div
       style={{
         height: "100vh",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: "center",
         background: "black",
         opacity: "0.8",
@@ -40,6 +37,7 @@ const Home = () => {
         {({ errors, touched }) => (
           <Form
             style={{
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               gap: "10px",
@@ -47,6 +45,7 @@ const Home = () => {
               padding: "10px",
               border: "1px solid white",
               borderRadius: "10px",
+              overflowY: "auto",
             }}
           >
             <div
@@ -55,9 +54,9 @@ const Home = () => {
                 flexDirection: "column",
               }}
             >
-              {join_forms?.join?.map((item, index) => (
-                <CustomInput key={index} {...item} />
-              ))}
+              {join_forms?.join?.map((item, index) => {
+                return <CustomInput key={index} {...item} />;
+              })}
             </div>
             <button
               style={{
@@ -74,6 +73,17 @@ const Home = () => {
           </Form>
         )}
       </Formik>
+
+      <div
+        style={{
+          width: "40%",
+          color: "white",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {Object.keys(styles).length !== 0 && <EditStyle styleData={styles} />}
+      </div>
     </div>
   );
 };

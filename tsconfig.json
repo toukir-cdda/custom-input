@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/Card.jsx",
-    "utils/validation.js"
+    "utils/validation.js",
+    "app/components/EditStyle.jsx"
   ],
   "exclude": ["node_modules"]
 }
