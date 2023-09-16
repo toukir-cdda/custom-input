@@ -1,5 +1,4 @@
 import { useFormikContext, ErrorMessage } from "formik";
-import getStyleFromEle from "../../utils/getStyleFromEle";
 import { useDispatch } from "react-redux";
 import { clearStyles, selectStyles } from "@/redux/styleSlice";
 
@@ -16,18 +15,20 @@ import { clearStyles, selectStyles } from "@/redux/styleSlice";
 
 const CustomTextBox = ({ ...item }) => {
   const dispatch = useDispatch();
-  const { values, handleChange, setFieldValue } = useFormikContext();
+  const { values, handleChange } = useFormikContext();
   return (
-    <div style={item.style.container}>
-      <label style={item.style.label}>{item.label}</label>
+    <div style={item.styles.container}>
+      <label style={item.styles.label}>{item.label}</label>
       <input
-        style={item.style.input}
+        style={item.styles.input}
         value={values[item.name]}
         {...item}
         onChange={handleChange}
-        onFocus={() => dispatch(selectStyles(item.style))}
-        // onFocus={() => eval(`(${item.onfocus})`)}
-        // onBlur={() => dispatch(clearStyles())}
+        onFocus={() =>
+          dispatch(
+            selectStyles({ field_name: item.name, field_style: item.styles })
+          )
+        }
       />
       <ErrorMessage
         name={item.name}

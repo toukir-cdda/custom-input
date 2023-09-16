@@ -53,7 +53,8 @@ export const join_forms: ValidateForm = {
       label: "Username",
       suffix: "",
       prefix: "",
-      style: {
+      hidden: false,
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -105,7 +106,7 @@ export const join_forms: ValidateForm = {
       label: "Date of birth",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
       },
@@ -127,8 +128,10 @@ export const join_forms: ValidateForm = {
       label: "Email",
       suffix: "",
       prefix: "",
-      style: {
+      hidden: false,
+      styles: {
         width: "100%",
+        color: "red",
         input_view: "vertical",
         container: {
           display: "flex",
@@ -139,11 +142,11 @@ export const join_forms: ValidateForm = {
           color: "lightgray",
         },
         input: {
-          background: "transparent",
-          border: "none",
+          backgroundColor: "transparent",
+          border: "5px solid green",
           borderBottom: "1px dotted white",
           padding: "0 5px",
-          color: "lightgray",
+          color: "red",
         },
       },
       default: "",
@@ -160,7 +163,7 @@ export const join_forms: ValidateForm = {
         },
         {
           type: "pattern",
-          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$/i,
           message: "Pattern not match",
         },
       ],
@@ -174,7 +177,7 @@ export const join_forms: ValidateForm = {
     //   label: "First Name",
     //   suffix: "",
     //   prefix: "",
-    //   style: {
+    //   styles: {
     //     width: 100,
     //     input_view: "vertical",
     //   },
@@ -206,7 +209,7 @@ export const join_forms: ValidateForm = {
     //   label: "Middle Name",
     //   suffix: "",
     //   prefix: "",
-    //   style: {
+    //   styles: {
     //     width: 100,
     //     input_view: "vertical",
     //   },
@@ -222,7 +225,7 @@ export const join_forms: ValidateForm = {
     //   label: "Last Name",
     //   suffix: "",
     //   prefix: "",
-    //   style: {
+    //   styles: {
     //     width: 100,
     //     input_view: "vertical",
     //   },
@@ -257,10 +260,25 @@ export const join_forms: ValidateForm = {
       pattern: "",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
         options: "horizontal",
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          padding: "4px",
+        },
+        label: {
+          color: "lightgray",
+        },
+        input: {
+          background: "transparent",
+          border: "none",
+          borderBottom: "1px dotted white",
+          padding: "0 5px",
+          color: "lightgray",
+        },
       },
       default: "",
       options: [
@@ -307,16 +325,29 @@ export const join_forms: ValidateForm = {
       description: "Radio field",
       placeholder: "",
       label: "Gender",
-      hidden: true,
+      hidden: false,
       pattern: "",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         display: "flex",
         flexDirection: "column",
         input_view: "vertical",
         options: "horizontal",
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          padding: "4px",
+        },
+        label: {
+          color: "lightgray",
+        },
+        input_label: {
+          display: "flex",
+          gap: "3px",
+          color: "darkgray",
+        },
       },
       default: "",
       validations: [
@@ -337,7 +368,7 @@ export const join_forms: ValidateForm = {
       hidden: false,
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -386,7 +417,7 @@ export const join_forms: ValidateForm = {
     //       description: "Checkbox field",
     //       placeholder: "",
     //       label: "Checkbox Fields",
-    //       style: {
+    //       styles: {
     //         width: 100,
     //         input_view: "vertical",
     //         options: "horizontal",
@@ -421,7 +452,7 @@ export const join_forms: ValidateForm = {
     //       label: "First Name",
     //       suffix: "",
     //       prefix: "",
-    //       style: {
+    //       styles: {
     //         width: 100,
     //         input_view: "vertical",
     //       },
@@ -452,7 +483,7 @@ export const join_forms: ValidateForm = {
     //       label: "Middle name",
     //       suffix: "",
     //       prefix: "",
-    //       style: {
+    //       styles: {
     //         width: 100,
     //         input_view: "vertical",
     //       },
@@ -467,7 +498,7 @@ export const join_forms: ValidateForm = {
     //       label: "Last Name",
     //       suffix: "",
     //       prefix: "",
-    //       style: {
+    //       styles: {
     //         width: 100,
     //         input_view: "vertical",
     //       },
@@ -498,7 +529,7 @@ export const join_forms: ValidateForm = {
     //       label: "Email",
     //       suffix: "",
     //       prefix: "",
-    //       style: {
+    //       styles: {
     //         width: 100,
     //         input_view: "vertical",
     //       },
@@ -529,7 +560,7 @@ export const join_forms: ValidateForm = {
     //       label: "Phone",
     //       suffix: "",
     //       prefix: "",
-    //       style: {
+    //       styles: {
     //         width: 100,
     //         input_view: "vertical",
     //       },
@@ -548,17 +579,31 @@ export const join_forms: ValidateForm = {
       field_step: ["step-3"],
       type: "checkbox",
       array: false,
+      hidden: false,
       typeValue: "array",
       name: "multiselect",
       description: "Checkbox field",
       placeholder: "",
       label: "Checkbox Fields",
-      style: {
+      styles: {
         width: 100,
         display: "flex",
         flexDirection: "column",
         input_view: "vertical",
         options: "horizontal",
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          padding: "4px",
+          color: "lightgray",
+          cursor: "pointer",
+        },
+        label: { color: "lightgray" },
+        input_label: {
+          display: "flex",
+          gap: "3px",
+          color: "darkgray",
+        },
       },
       default: [],
       options: [
@@ -586,15 +631,29 @@ export const join_forms: ValidateForm = {
       field_step: ["step-3"],
       type: "checkbox",
       array: false,
+      hidden: false,
       typeValue: "boolean",
       name: "terms",
       description: "Checkbox field",
       placeholder: "",
       label: "Terms and Conditions",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
         options: "horizontal",
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          padding: "4px",
+        },
+        label: {
+          color: "lightgray",
+        },
+        input_label: {
+          display: "flex",
+          gap: "3px",
+          color: "darkgray",
+        },
       },
       default: false,
       validations: [
@@ -612,7 +671,7 @@ export const join_forms: ValidateForm = {
       array: false,
       typeValue: "boolean",
       name: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         backgroundColor: "skyblue",
@@ -637,7 +696,7 @@ export const join_forms: ValidateForm = {
       array: false,
       typeValue: "string",
       name: "favcolor",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -671,7 +730,7 @@ export const join_forms: ValidateForm = {
       label: "Current Time & Date",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
       },
@@ -693,7 +752,7 @@ export const join_forms: ValidateForm = {
       label: "Current Month",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
       },
@@ -715,7 +774,7 @@ export const join_forms: ValidateForm = {
       label: "Current Week",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
       },
@@ -737,7 +796,7 @@ export const join_forms: ValidateForm = {
       label: "Current Time",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: 100,
         input_view: "vertical",
       },
@@ -761,7 +820,7 @@ export const join_forms: ValidateForm = {
       label: "Single Document",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -801,7 +860,7 @@ export const join_forms: ValidateForm = {
       label: "Input Image",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -835,7 +894,7 @@ export const join_forms: ValidateForm = {
       label: "Volume (between 0 and 50)",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -863,7 +922,7 @@ export const join_forms: ValidateForm = {
       label: "Search Google",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -891,7 +950,7 @@ export const join_forms: ValidateForm = {
       label: "Add your website url",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -921,7 +980,7 @@ export const join_forms: ValidateForm = {
       label: "Quantity (between 1 and 5)",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {
@@ -950,7 +1009,7 @@ export const join_forms: ValidateForm = {
       label: "Enter your phone number",
       suffix: "",
       prefix: "",
-      style: {
+      styles: {
         width: "100%",
         input_view: "vertical",
         container: {

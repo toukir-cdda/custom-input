@@ -1,4 +1,6 @@
 import { useFormikContext, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
+import { clearStyles, selectStyles } from "@/redux/styleSlice";
 
 interface CustomInputProps {
   label: string;
@@ -11,34 +13,23 @@ interface CustomInputProps {
   item: any;
 }
 
-const CustomRadio: React.FC<CustomInputProps> = ({
-  // label,
-  // name,
-  // type,
-  // options,
-  // style,
-  // array,
-  ...item
-}) => {
+const CustomRadio = ({ ...item }) => {
+  const dispatch = useDispatch();
   const { values, handleChange } = useFormikContext();
-
   return (
     <div
-      // style={item.style}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "4px",
-      }}
+      style={item?.styles?.container}
+      onClick={() =>
+        dispatch(
+          selectStyles({ field_name: item.name, field_style: item.styles })
+        )
+      }
     >
-      <label style={{ color: "lightgray" }}>{item.label}</label>
+      <label style={item?.styles?.label}>{item.label}</label>
       {item.type === "radio" && (
         <>
           {item.options?.map((option, index) => (
-            <label
-              key={index}
-              style={{ display: "flex", gap: "3px", color: "darkgray" }}
-            >
+            <label key={index} style={item?.styles?.input_label}>
               <input
                 type={item.type}
                 name={item.name}

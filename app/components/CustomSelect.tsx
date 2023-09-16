@@ -1,5 +1,6 @@
 import { useFormikContext, ErrorMessage } from "formik";
-
+import { useDispatch } from "react-redux";
+import { clearStyles, selectStyles } from "@/redux/styleSlice";
 interface CustomInputProps {
   label: string;
   name: string;
@@ -11,36 +12,20 @@ interface CustomInputProps {
   item: any;
 }
 
-const CustomSelect: React.FC<CustomInputProps> = ({
-  // label,
-  // name,
-  // type,
-  // options,
-  // style,
-  // array,
-  ...item
-}) => {
+const CustomSelect = ({ ...item }) => {
   const { handleChange } = useFormikContext();
-
+  const dispatch = useDispatch();
   return (
-    <div
-      // style={item.style}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "4px",
-      }}
-    >
-      <label style={{ color: "lightgray" }}>{item.label}</label>
+    <div style={item?.styles?.container}>
+      <label style={item?.styles?.label}>{item.label}</label>
       {item.type === "select" && (
         <select
-          style={{
-            background: "transparent",
-            border: "none",
-            borderBottom: "1px dotted black",
-            padding: "0 5px",
-            color: "darkgray",
-          }}
+          onFocus={() =>
+            dispatch(
+              selectStyles({ field_name: item.name, field_style: item.styles })
+            )
+          }
+          style={item?.styles?.input}
           name={item.name}
           onChange={handleChange}
           multiple={item.array}

@@ -5,12 +5,24 @@ const CustomEmail = ({ ...item }) => {
   const { values, handleChange } = useFormikContext();
   const dispatch = useDispatch();
   return (
-    <div style={item.style.container}>
-      <label style={item.style.label}>{item.label}</label>
+    <div style={item.styles.container}>
+      <label style={item.styles.label}>{item.label}</label>
       <input
+        style={item?.styles?.input}
+        // style={{
+        //   backgroundColor: "transparent",
+        //   border: "5px solid red",
+        //   borderBottom: "1px dotted white",
+        //   padding: "0 5px",
+        //   color: "red",
+        // }}
         {...item}
         value={values[item.name]}
-        onFocus={() => dispatch(selectStyles(item.style))}
+        onFocus={() =>
+          dispatch(
+            selectStyles({ field_name: item.name, field_style: item.styles })
+          )
+        }
         onChange={handleChange}
       />
       <ErrorMessage

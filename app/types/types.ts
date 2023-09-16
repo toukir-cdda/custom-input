@@ -62,6 +62,7 @@ export type FormField = {
     container?: any;
     label?: any;
     input?: any;
+    input_label?: any;
   };
   default?: any;
   options?: { value: string; desc: string }[];

@@ -1,4 +1,6 @@
 import { useFormikContext, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
+import { clearStyles, selectStyles } from "@/redux/styleSlice";
 
 interface CustomInputProps {
   label: string;
@@ -11,33 +13,26 @@ interface CustomInputProps {
   item: any;
 }
 
-const CustomCheckbox: React.FC<CustomInputProps> = ({
-  // label,
-  // name,
-  // type,
-  // options,
-  // style,
-  // array,
-  ...item
-}) => {
+const CustomCheckbox = ({ ...item }) => {
   const { values, handleChange } = useFormikContext();
-
+  const dispatch = useDispatch();
   return (
-    <div
-      // style={item.style}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "4px",
-      }}
-    >
+    <div style={item?.styles?.container}>
       {item.type === "checkbox" && item.options ? (
         <>
-          <label style={{ color: "lightgray" }}>{item.label}</label>
+          <label style={item?.styles?.label}>{item.label}</label>
           {item.options?.map((option, index) => (
             <label
               key={index}
-              style={{ display: "flex", gap: "3px", color: "darkgray" }}
+              style={item?.styles?.input_label}
+              onClick={() =>
+                dispatch(
+                  selectStyles({
+                    field_name: item.name,
+                    field_style: item.styles,
+                  })
+                )
+              }
             >
               <input
                 type={item.type}
@@ -51,7 +46,17 @@ const CustomCheckbox: React.FC<CustomInputProps> = ({
         </>
       ) : (
         <>
-          <label style={{ display: "flex", gap: "3px", color: "lightgray" }}>
+          <label
+            style={item?.styles?.input_label}
+            onClick={() =>
+              dispatch(
+                selectStyles({
+                  field_name: item.name,
+                  field_style: item.styles,
+                })
+              )
+            }
+          >
             <input
               type={item.type}
               name={item.name}
