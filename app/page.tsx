@@ -21,7 +21,7 @@ const Home = () => {
     //set json value on redux store
     dispatch(setFormData(join_forms));
   }, []);
-
+  // console.log(form);
   return (
     <div
       style={{

@@ -14,13 +14,12 @@ const CustomForm = () => {
     initialValues: initialValues,
     onSubmit: (values) => {
       // Handle form submission here
-      // console.log(values);
+
       dispatch(
         updateFormData({ updated_styles: values, field_name: field_name })
       );
     },
   });
-
   useEffect(() => {
     formik.setValues(initialValues);
   }, [initialValues]);

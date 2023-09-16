@@ -19,7 +19,7 @@ const formSlice = createSlice({
       );
 
       if (fieldToUpdate) {
-        fieldToUpdate.style = updated_styles;
+        fieldToUpdate.styles = updated_styles;
       }
       state.form = formData;
     },
