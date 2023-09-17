@@ -1,32 +1,16 @@
-import { clearStyles, selectStyles } from '@/redux/styleSlice';
+import { selectStyles } from '@/redux/styleSlice';
 import { useFormikContext, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-
-interface CustomInputProps {
-      label: string;
-      name: string;
-      type: 'text' | 'date' | 'password' | 'select' | 'radio' | 'checkbox';
-      options?: { label: string; value: string }[];
-      style?: any;
-      placeholder?: string;
-      item: any;
-}
-
-const CustomDate = ({ ...item }) => {
+const CustomEmail = ({ ...item }) => {
       const { values, handleChange } = useFormikContext();
       const dispatch = useDispatch();
-
       return (
-            <div style={item?.styles?.container}>
-                  <label style={item?.styles?.label}>{item.label}</label>
+            <div style={item.styles.container}>
+                  <label style={item.styles.label}>{item.label}</label>
                   <input
                         style={item?.styles?.input}
-                        type={item.type}
-                        name={item.name}
+                        {...item}
                         value={values[item.name]}
-                        // {...item}
-                        onChange={handleChange}
-                        placeholder={item.placeholder}
                         onFocus={() =>
                               dispatch(
                                     selectStyles({
@@ -35,6 +19,7 @@ const CustomDate = ({ ...item }) => {
                                     })
                               )
                         }
+                        onChange={handleChange}
                   />
                   <ErrorMessage
                         name={item.name}
@@ -45,4 +30,4 @@ const CustomDate = ({ ...item }) => {
       );
 };
 
-export default CustomDate;
+export default CustomEmail;
