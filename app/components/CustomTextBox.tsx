@@ -21,9 +21,27 @@ const CustomTextBox = ({ ...item }) => {
 
       const sheet = jss.createStyleSheet(item?.styles).attach();
 
+      const jsxStyles = `
+      .container {
+            background-color: green;
+      }
+      .container:hover {
+            background-color: lightblue;
+      }
+      label {
+            color: blue;
+      }
+      @media (min-width: 1024px) {
+            .container {
+                  background-color: blue;
+            }
+      }
+`;
+
       return (
             <div
                   className={sheet.classes.container}
+                  // className="container"
                   // style={item?.styles?.container}
             >
                   <label
@@ -54,6 +72,7 @@ const CustomTextBox = ({ ...item }) => {
                         component="div"
                         className="text-red-500 text-xs py-1 "
                   />
+                  <style jsx>{jsxStyles}</style>
             </div>
       );
 };

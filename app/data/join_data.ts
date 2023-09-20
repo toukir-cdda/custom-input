@@ -61,11 +61,17 @@ export const join_forms: ValidateForm = {
                               display: 'flex',
                               flexDirection: 'column',
                               padding: '4px',
+                              animationName: '$slideRight',
+                              animationDuration: '4s',
+                              animationIterationCount: 'infinite',
                         },
                         label: {
                               color: 'red',
                               '&:hover': {
                                     color: 'blue',
+                              },
+                              '@media(min-width:1024px)': {
+                                    color: 'black',
                               },
                         },
                         input: {
@@ -75,17 +81,19 @@ export const join_forms: ValidateForm = {
                               padding: '0 5px',
                               color: 'lightgray',
                         },
-                        '@media (min-width: 1024px)': {
-                              container: {
-                                    display: 'block',
-                              },
-                              label: {
-                                    color: 'green',
-                              },
-                              input: {
-                                    background: 'red',
-                              },
+                        '@keyframes slideRight': {
+                              from: { backgroundColor: 'red' },
+                              to: { backgroundColor: 'yellow' },
                         },
+                        // '@media(min-width:1024px)': {
+                        //       container: {
+                        //             display: 'block',
+                        //       },
+
+                        //       input: {
+                        //             background: 'red',
+                        //       },
+                        // },
                   },
                   classes: {},
                   default: 'marufhosen',

@@ -7,7 +7,7 @@ import setFormikPropsValue from '../utils/setFormikPropsValue';
 import { useSelector, useDispatch } from 'react-redux';
 import EditStyle from './components/EditStyle';
 import CustomForm from './components/form-component/CustomForm';
-
+import { jss } from 'react-jss';
 import { selectStyles } from '@/redux/styleSlice';
 import { setFormData } from '@/redux/formSlice';
 
@@ -16,6 +16,19 @@ const Home = () => {
       const { field_style } = useSelector((state) => state?.inputStyle);
       const { form } = useSelector((state) => state?.formData);
 
+      const sheet = jss
+            .createStyleSheet({
+                  imageContainer: {
+                        backgroundColor: 'gray',
+                        padding: '15px',
+                  },
+                  image: {
+                        width: '400px',
+                        mixBlendMode: 'color-dodge',
+                  },
+            })
+            .attach();
+
       const { initialValues, validationSchema } = setFormikPropsValue(
             form?.join
       );
@@ -23,7 +36,6 @@ const Home = () => {
             //set json value on redux store
             dispatch(setFormData(join_forms));
       }, []);
-      // console.log(form);
       return (
             <div
                   style={{
@@ -97,6 +109,14 @@ const Home = () => {
                               );
                         }}
                   </Formik>
+
+                  <div className={sheet.classes.imageContainer}>
+                        <img
+                              className={sheet.classes.image}
+                              src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2117&q=80"
+                              alt=""
+                        />
+                  </div>
 
                   <div
                         style={{
